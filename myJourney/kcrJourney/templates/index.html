@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Learning Journey</title>
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>My Learning Journey</h1>
+        <nav>
+            <a href="{% url 'index' %}">Home</a>
+            <a href="{% url 'about' %}">About Me</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h2>My Journals</h2>
+        <div class="journal-section">
+            {% for journal in journals %}
+                <div class="journal-card">
+                    <h3>{{ journal.title }}</h3>
+                    <p>{{ journal.content }}</p>
+                    <small>Written on {{ journal.date_created|date:"M d, Y" }}</small>
+                </div>
+            {% empty %}
+                <p>My journey in this college began two years ago. I’m a passionate explorer of ideas and experiences, always curious to learn and grow. I enjoy documenting my journey, whether through writing, coding, or creative projects, and I love sharing my thoughts and discoveries with others. Every day is an opportunity to explore something new and make meaningful connections. the experiences I gained after coming to this college is immense. i would like to say that this two years have been filled with joy and fun learning.</p>
+            {% endfor %}
+        </div>
+    </main>
+</body>
+</html>
